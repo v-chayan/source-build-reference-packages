@@ -13,7 +13,7 @@ public class ReferencePackagesTest : IClassFixture<SBRPFixture>, IDisposable
         WorkingDirectory = fixture.WorkingDirectory;
     }
 
-    [Theory]    
+    [Theory(Timeout = 300000)]    
     [MemberData(nameof(PackageData.Data), MemberType = typeof(PackageData))]
     public void VerifySBRP(string package, PackageType type)
     {
