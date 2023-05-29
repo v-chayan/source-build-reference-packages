@@ -18,6 +18,4 @@ scriptroot="$( cd -P "$( dirname "$source" )" && pwd )"
  export DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1
  export DOTNET_MULTILEVEL_LOOKUP=0
 
-. "$scriptroot/eng/common/tools.sh"
-InitializeToolset
-.dotnet/dotnet test tests/SBRPTests/SBRPTests.csproj
+"$scriptroot/eng/common/build.sh" --restore --build --test --warnaserror false /p:SBRPTests=true
