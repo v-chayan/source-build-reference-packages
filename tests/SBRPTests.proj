@@ -1,11 +1,13 @@
 <Project Sdk="Microsoft.DotNet.Arcade.Sdk">
   <PropertyGroup>
-    <DotnetCli>"$(RepoRoot).dotnet\dotnet"</DotnetCli>
-    <TestBinary>"$(RepoRoot)artifacts\bin\SBRPTests\Debug\net8.0\SBRPTests.dll"</TestBinary>
+    <IsTestProject>true</IsTestProject>
   </PropertyGroup>
-  <Target Name="Build">
+  <Target Name="Restore">
     <MSBuild Projects="SBRPTests\SBRPTests.csproj"
-             Targets="Restore;Build" />
-     <Exec Command="$(DotnetCli) test $(TestBinary)" ConsoleToMsBuild='true'/>
+             Targets="Restore" />
+  </Target>
+  <Target Name="Build" DependsOnTargets="Restore">
+    <MSBuild Projects="SBRPTests\SBRPTests.csproj"
+             Targets="Build;VSTest" />
   </Target>
 </Project>
