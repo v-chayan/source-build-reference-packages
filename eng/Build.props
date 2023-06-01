@@ -5,7 +5,7 @@
   </ItemGroup>
 
   <ItemGroup Condition="'$(RunTests)' == 'true'">
-    <ProjectToBuild Include="$(RepoRoot)tests\SBRPTests.proj" />
+    <ProjectToBuild Include="$(RepoRoot)tests\SBRPTests\SBRPTests.csproj" Test="$(Test)" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(GeneratePackageSource)' != 'true' and '$(RunTests)' != 'true'">
